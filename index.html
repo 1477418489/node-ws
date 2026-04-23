@@ -1,282 +1,75 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>爱心公益 | 传递温暖，共建美好</title>
-    <!-- 图标库 -->
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif;
-            scroll-behavior: smooth;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>人人要有爱心</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Microsoft YaHei", Arial, sans-serif;
+      background: linear-gradient(135deg, #ffe4e1, #fffaf0);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
 
-        /* 公益暖色调背景 */
-        body {
-            background: linear-gradient(135deg, #fff5f7 0%, #fef2f0 100%);
-            min-height: 100vh;
-        }
+    .container {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 700px;
+      text-align: center;
+    }
 
-        /* 导航栏 */
-        nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 5%;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            z-index: 999;
-        }
+    h1 {
+      color: #e74c3c;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
 
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    p {
+      font-size: 18px;
+      line-height: 1.8;
+      margin: 12px 0;
+    }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #e64980;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+    .heart {
+      font-size: 48px;
+      color: #ff4d6d;
+      margin: 20px 0;
+      animation: beat 1s infinite;
+      display: inline-block;
+    }
 
-        .nav-links a {
-            margin-left: 2rem;
-            text-decoration: none;
-            color: #555;
-            font-weight: 500;
-            transition: 0.3s;
-        }
+    @keyframes beat {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.1); }
+      50% { transform: scale(1); }
+      75% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
 
-        .nav-links a:hover {
-            color: #e64980;
-        }
-
-        /* 主容器 */
-        .container {
-            max-width: 1200px;
-            margin: 120px auto 50px;
-            padding: 0 5%;
-        }
-
-        /* 公益主视觉卡片 */
-        .hero-card {
-            background: white;
-            border-radius: 20px;
-            padding: 60px 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-            text-align: center;
-            animation: fadeIn 1s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fad0c4);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-card h1 {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 15px;
-        }
-
-        .hero-card h1 span {
-            color: #e64980;
-        }
-
-        .hero-card p {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 35px;
-            line-height: 1.8;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* 公益按钮 */
-        .btn {
-            display: inline-block;
-            padding: 14px 35px;
-            background: linear-gradient(135deg, #ff6b9d, #e64980);
-            color: white;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(230, 73, 128, 0.25);
-        }
-
-        /* 公益项目卡片 */
-        .section-title {
-            text-align: center;
-            margin: 70px 0 40px;
-            font-size: 2rem;
-            color: #333;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            width: 60px;
-            height: 4px;
-            background: #e64980;
-            display: block;
-            margin: 12px auto;
-            border-radius: 2px;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 18px;
-            padding: 35px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
-            transition: 0.3s;
-            text-align: center;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.08);
-        }
-
-        .card i {
-            font-size: 2.8rem;
-            color: #e64980;
-            margin-bottom: 20px;
-        }
-
-        .card h3 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* 页脚 */
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: #777;
-            margin-top: 60px;
-            background: white;
-            border-top: 1px solid #f0f0f0;
-        }
-
-        .footer-heart {
-            color: #e64980;
-            margin: 0 5px;
-        }
-    </style>
+    .footer {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #666;
+    }
+  </style>
 </head>
 <body>
-
-<!-- 导航栏 -->
-<nav>
-    <div class="nav-container">
-        <div class="logo">
-            <i class="fas fa-heart"></i> 爱心公益
-        </div>
-        <div class="nav-links">
-            <a href="#home">首页</a>
-            <a href="#projects">公益项目</a>
-            <a href="#about">关于我们</a>
-        </div>
-    </div>
-</nav>
-
-<!-- 主内容 -->
-<div class="container" id="home">
-    <div class="hero-card">
-        <h1>用<span>爱心</span>温暖世界，用行动传递希望</h1>
-        <p>我们致力于帮扶困境儿童、关爱孤寡老人、支援灾区重建、推广环保公益。每一份善意，都能让世界变得更美好。</p>
-        <button class="btn">加入我们 · 共筑爱心</button>
-    </div>
-
-    <!-- 公益项目展示 -->
-    <h2 class="section-title" id="projects">我们的公益项目</h2>
-    <div class="cards">
-        <div class="card">
-            <i class="fas fa-child"></i>
-            <h3>关爱困境儿童</h3>
-            <p>为留守儿童、贫困儿童提供学习物资、生活补助与心理陪伴，守护他们健康成长。</p>
-        </div>
-
-        <div class="card">
-            <i class="fas fa-hands-helping"></i>
-            <h3>志愿服务</h3>
-            <p>组织志愿者走进社区、养老院、乡村，开展帮扶、慰问、公益宣讲等活动。</p>
-        </div>
-
-        <div class="card">
-            <i class="fas fa-donate"></i>
-            <h3>爱心捐赠</h3>
-            <p>公开透明接收爱心物资与善款，全部用于公益事业，定期公示使用情况。</p>
-        </div>
-
-        <div class="card">
-            <i class="fas fa-tree"></i>
-            <h3>环保公益</h3>
-            <p>推广绿色生活，开展植树、垃圾分类、河流保护等行动，守护共同家园。</p>
-        </div>
-
-        <div class="card">
-            <i class="fas fa-people-group"></i>
-            <h3>乡村振兴</h3>
-            <p>助力乡村教育、农业发展、基础设施建设，让乡村更美好。</p>
-        </div>
-
-        <div class="card">
-            <i class="fas fa-ambulance"></i>
-            <h3>应急救助</h3>
-            <p>灾害发生时快速响应，为受灾群众提供物资、医疗与生活保障。</p>
-        </div>
-    </div>
-</div>
-
-<!-- 页脚 -->
-<footer id="about">
-    <p>爱心公益平台 &copy; 2026 | 用<i class="fas fa-heart footer-heart"></i>传递温暖，让爱无处不在</p>
-</footer>
-
+  <div class="container">
+    <h1>人人要有爱心</h1>
+    <div class="heart">❤️</div>
+    <p>爱心是一种温暖的力量，可以照亮他人，也能温暖自己。</p>
+    <p>一句关心的话语，一个善意的微笑，一次真诚的帮助，都会让这个世界变得更加美好。</p>
+    <p>无论在生活中、学习中，还是工作中，我们都应该学会关爱他人、帮助他人、理解他人。</p>
+    <p>让我们从身边的小事做起，把爱心传递给更多的人。</p>
+    <div class="footer">愿世界因爱而更加美好 🌸</div>
+  </div>
 </body>
 </html>
